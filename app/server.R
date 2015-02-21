@@ -1,17 +1,25 @@
 require(shiny)
-# require(rCharts)
+require(rCharts)
 
 shinyServer(function(input, output) {
-
-  output$distPlot <- renderPlot({
-
-    # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2]
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-
+  
+  output$tab_container_1 <- renderChart2({
+    
+    print(input$slider1)
+    print(input$slider1)
+    print(input$slider1[1])
+    print(input$slider1[2])
+    
+    data <- getData(input$slider1[1], input$slider1[2])  
+    
+    chart <- mPlot(x = 'year', 
+                   y = 'presos', 
+                   type = 'Line',
+                   data = data)
+    
+    chart$set(pointSize = 0, lineWidth = 1)    
+    
+    chart
   })
-
+  
 })

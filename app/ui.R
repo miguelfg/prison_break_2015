@@ -1,23 +1,25 @@
-library(shiny)
+require(shiny)
 
-shinyUI(fluidPage(
-
-  # Application title
-  titlePanel("Old Faithful Geyser Data"),
-
-  # Sidebar with a slider input for number of bins
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
-    ),
-
-    # Show a plot of the generated distribution
-    mainPanel(
-      plotOutput("distPlot")
+shinyUI(pageWithSidebar( 
+  
+  headerPanel("Prison Break 2015"),
+  
+  sidebarPanel(
+    "Juega con los datos!", 
+    # Num of measure traffic points
+    sliderInput("slider1", "",
+                min = 2000, max = 2014, value = c(2010, 2014))
+  ),
+   
+  mainPanel(
+    tabsetPanel(
+      tabPanel("blabla", 
+               includeMarkdown("texts/desc_table.md"),
+               chartOutput("tab_container_1", 'morris')
+      ),
+      tabPanel("balbla", includeMarkdown("texts/desc_table.md"))
     )
   )
+  
 ))
+
