@@ -1,4 +1,5 @@
-library(shiny)
+require(shiny)
+# require(rCharts)
 
 shinyServer(function(input, output) {
 

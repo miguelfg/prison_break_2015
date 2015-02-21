@@ -14,6 +14,7 @@ deploy.R
 shinyapps
 
 # Other files
+
 .png
 
 deploy.R
